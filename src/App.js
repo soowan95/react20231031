@@ -1,8 +1,14 @@
 function App() {
+  // jsx에서 태그 사용시 반드시 종료태그를 작성해야 함
+  // 빈 요소이면 시작태그에서 종료해야 함
   return (
     <div>
       <h1>hello react</h1>
       <h2>hi react</h2>
+      <p>
+        Lorem ipsum dolor.
+        <br /> Lorem ipsum dolor.
+      </p>
       <MyComp />
     </div>
   );
@@ -20,7 +26,11 @@ function MyComp() {
 
   // JSX에서 주석 사용법
   // {/* */}
-  return <h1>hi component</h1>;
+  return (
+    <>
+      <h1>hi component</h1>
+    </>
+  );
 }
 
 export default App;
