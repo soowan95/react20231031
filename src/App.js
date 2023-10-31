@@ -1,13 +1,21 @@
 function App() {
-  // jsx가 js 코드로 변환됨
-  // 따라서 js 키워드를 사용할 수 없음
+  const myStyle = {
+    color: "blue",
+    fontSize: "3rem",
+    backgroundColor: "gold",
+    textAlign: "center",
+  };
+
   return (
     <>
-      {/* class 속성은 className으로 작성 */}
-      <div className="header">Lorem ipsum dolor.</div>
-      {/* for 속성은 htmlFor로 작성 */}
-      <label htmlFor="nameInput">이름</label>
-      <input type="text" id="nameInput" />
+      {/* style 속성은 객체로 주어야 함 */}
+      <div style={myStyle}>Lorem ipsum dolor.</div>
+      <hr />
+      <div
+        style={{ color: "red", backgroundColor: "yellow", fontSize: "2rem" }}
+      >
+        Lorem ipsum dolor.
+      </div>
     </>
   );
 }
