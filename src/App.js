@@ -1,12 +1,21 @@
-// export된 컴포넌트를 import 해서 사용
-import { MyElem } from "./component/MyElem";
-import { MyComp } from "./component/MyComp";
+import {
+  MyBox,
+  MyElem,
+  MyContainer,
+  name,
+  address,
+  person,
+} from "./component/MyBox";
 
 function App() {
+  console.log("name", name);
+  console.log("address", address);
+  console.log("person", person);
   return (
     <>
-      <MyComp />
+      <MyBox />
       <MyElem />
+      <MyContainer />
     </>
   );
 }
