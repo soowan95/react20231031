@@ -1,21 +1,12 @@
-import {
-  MyBox,
-  MyElem,
-  MyContainer,
-  name,
-  address,
-  person,
-} from "./component/MyBox";
+import aasdfasf, { address } from "./component/MyElem";
+import Any from "./component/MyBox";
 
 function App() {
-  console.log("name", name);
-  console.log("address", address);
-  console.log("person", person);
   return (
     <>
-      <MyBox />
-      <MyElem />
-      <MyContainer />
+      <h1>{address}</h1>
+      <h1>{aasdfasf}</h1>
+      <Any />
     </>
   );
 }
