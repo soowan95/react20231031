@@ -1,8 +1,10 @@
 import {
   Box,
+  Flex,
   FormControl,
   FormLabel,
   Select,
+  Switch,
   Textarea,
 } from "@chakra-ui/react";
 
@@ -11,8 +13,10 @@ function App() {
     <>
       <Box w={"480px"}>
         <FormControl>
-          <FormLabel>본문</FormLabel>
-          <Textarea placeholder="본문을 작성하세요"></Textarea>
+          <Flex align={"center"}>
+            <FormLabel>알림을 받으시겠습니까?</FormLabel>
+            <Switch />
+          </Flex>
         </FormControl>
       </Box>
     </>
