@@ -3,6 +3,7 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  Image,
   Select,
   Switch,
   Textarea,
@@ -12,13 +13,30 @@ function App() {
   return (
     <>
       <Box w={"480px"}>
-        <FormControl>
-          <Flex align={"center"}>
-            <FormLabel>알림을 받으시겠습니까?</FormLabel>
-            <Switch />
-          </Flex>
-        </FormControl>
+        <Image src="https://bit.ly/dan-abramov" />
       </Box>
+      <Box>
+        <Image boxSize={"100px"} src="https://bit.ly/dan-abramov" />
+      </Box>
+      <Box>
+        <Image boxSize={"200px"} src="https://bit.ly/dan-abramov" />
+      </Box>
+      <Box>
+        <Image
+          boxSize={"200px"}
+          borderRadius={"full"}
+          src="https://bit.ly/dan-abramov"
+        />
+      </Box>
+      <Box>
+        <Image src="123123/123" fallbackSrc="https://via.placeholder.com/150" />
+      </Box>
+      <Box></Box>
+      <Box></Box>
+      <Box></Box>
+      <Box></Box>
+      <Box></Box>
+      <Box></Box>
     </>
   );
 }
