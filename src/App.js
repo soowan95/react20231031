@@ -1,36 +1,31 @@
-import { Button, useToast } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
+import { ArrowRightIcon, EmailIcon } from "@chakra-ui/icons";
 
 function App() {
-  const toast = useToast();
-
   return (
     <>
-      <Button
-        onClick={() =>
-          toast({
-            title: "저장 완료",
-            description: "게시물이 저장되었습니다.",
-            duration: 2000,
-            position: "top",
-            isClosable: true,
-          })
-        }
-      >
-        토스트 띄우기
+      <Button colorScheme="blue">Lorem.</Button>
+      <Button colorScheme="red">Lorem.</Button>
+      <Button colorScheme="yellow">Provident?</Button>
+      <Button colorScheme="orange">Optio.</Button>
+      <Button colorScheme="teal" size={"sm"}>
+        Ipsum.
       </Button>
-      <Button
-        onClick={() =>
-          toast({
-            title: "저장 실패",
-            description: "게시물이 저장되지 않았습니다.",
-            duration: 2000,
-            position: "top",
-            isClosable: true,
-            status: "error",
-          })
-        }
-      >
-        토스트 띄우기
+      <Button colorScheme="messenger" size={"lg"}>
+        Excepturi.
+      </Button>
+      <Button colorScheme="telegram" variant="outline">
+        Unde.
+      </Button>
+      <Button colorScheme="orange" variant="ghost">
+        Debitis!
+      </Button>
+      <Button variant="link">Aliquid.</Button>
+      <Button leftIcon={<EmailIcon />}>Aut.</Button>
+      <Button rigthIcon={<ArrowRightIcon />}>Vel.</Button>
+      <Button isLoading={true}>Dolores.</Button>
+      <Button isLoading loadingText="전송중">
+        Nisi.
       </Button>
     </>
   );
