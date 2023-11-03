@@ -1,19 +1,26 @@
-function MyComp({ text, address, children }) {
+import { Button } from "@chakra-ui/react";
+
+function MyComp({ to, someProp }) {
   return (
     <>
-      <p>{text}</p>
-      <p>{address}</p>
-      <p>{children}</p>
+      <div>
+        <a href={to[0]}>link</a>
+      </div>
+      <div>
+        <Button onClick={someProp}>버튼</Button>
+      </div>
     </>
   );
 }
 
 function App() {
+  function func1() {
+    console.log("func1 실행됨");
+  }
+
   return (
     <>
-      <MyComp text={"hello"} address={"seoul"}>
-        some content 다른 컴포넌트가 있을 수도 있음.
-      </MyComp>
+      <MyComp to={["http://www.naver.com"]} someProp={func1}></MyComp>
     </>
   );
 }
