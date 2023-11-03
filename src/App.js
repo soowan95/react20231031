@@ -2,18 +2,25 @@ import { Box, Button, Center, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
 function App() {
-  const [number, setNumber] = useState(0);
+  let [number, setNumber] = useState(0);
 
-  const isOdd = number % 2 == 1;
-
-  function handleInputChange(e) {
-    setNumber(Number(e.target.value));
+  function handlePlusButtonClick(e) {
+    setNumber(number + 1);
   }
-
+  function handleMinusButtonClick(e) {
+    setNumber(number - 1);
+  }
   return (
     <>
-      <Input onChange={handleInputChange} type="number" />
-      <Text>{(isOdd && "홀수") || "짝수"}</Text>
+      <input type="number" value={number} />
+      <Box>
+        <Button onClick={handlePlusButtonClick}>+</Button>
+        <Button onClick={handleMinusButtonClick}>-</Button>
+      </Box>
+      <Box>
+        <Button onClick={() => setNumber(++number)}>+</Button>
+        <Button onClick={() => setNumber(--number)}>-</Button>
+      </Box>
     </>
   );
 }
