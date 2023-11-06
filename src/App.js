@@ -1,30 +1,25 @@
-import { useState } from "react";
-import { Box, Button, Text } from "@chakra-ui/react";
+import { List, ListItem } from "@chakra-ui/react";
 
 function App() {
-  // set... 메소드로 상태 변경할 수 있음
-  // state 가 같은지 아닌지 판단해서 re-render 결정함
-  const [number, setNumber] = useState(0);
-  const [numberObject, setNumberObject] = useState({ number: 0 });
+  const arr = ["pizza", "donkatzu", "hamburger", "kimchi"];
+  const arr2 = ["son", "lee", "kim"];
+  const arr3 = ["latte", "espresso", "capuchino"];
+
+  const listItems = arr.map((item) => <ListItem>{item}</ListItem>);
 
   return (
     <>
-      <Box>
-        <Button onClick={() => setNumber(number + 1)}>number 변경</Button>
-        <Text>{number}</Text>
-      </Box>
-      <Box>
-        <Button
-          onClick={() => {
-            const newNumberObject = { ...numberObject };
-            newNumberObject.number = newNumberObject.number + 1;
-            setNumberObject(newNumberObject);
-          }}
-        >
-          number object 변경
-        </Button>
-        <Text>{numberObject.number}</Text>
-      </Box>
+      <List mb={4}>{listItems} </List>
+      <List mb={4}>
+        {arr2.map((i) => (
+          <ListItem>{i}</ListItem>
+        ))}
+      </List>
+      <List>
+        {arr3.map((i) => (
+          <ListItem>{i}</ListItem>
+        ))}
+      </List>
     </>
   );
 }
