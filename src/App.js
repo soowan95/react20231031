@@ -1,21 +1,6 @@
-import { createContext, useContext, useState } from "react";
-import { Button, Text } from "@chakra-ui/react";
-
-function Acomp() {
-  // 3. context 사용하기 : useContext()
-  const f = useContext(MessageContext);
-  return (
-    <Button onClick={() => f.setMessage("changed message")}>
-      change message!!
-    </Button>
-  );
-}
-
-function Bcomp() {
-  // 3. context 사용하기 : useContext()
-  const m = useContext(MessageContext);
-  return <Text>{m.message}</Text>;
-}
+import { createContext, useState } from "react";
+import { Acomp } from "./Acomp";
+import { Bcomp } from "./Bcomp";
 
 function App(props) {
   const [message, setMessage] = useState("init state message");
@@ -32,6 +17,6 @@ function App(props) {
 }
 
 // 1. context 만들기 : createContext
-const MessageContext = createContext(null);
+export const MessageContext = createContext(null);
 
 export default App;
