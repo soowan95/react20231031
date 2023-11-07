@@ -1,40 +1,37 @@
-import { Button, Text } from "@chakra-ui/react";
 import { createContext, useContext, useState } from "react";
+import { Button, Text } from "@chakra-ui/react";
 
-function Ccomp() {
-  // 3. context 사용하기 : useContext(대문자...context);
-  const m = useContext(MessageContext);
-  return <Text>받은 메세지 : {m}</Text>;
+function Acomp() {
+  // 3. context 사용하기 : useContext()
+  const f = useContext(MessageContext);
+  return (
+    <Button onClick={() => f.setMessage("changed message")}>
+      change message!!
+    </Button>
+  );
 }
 
 function Bcomp() {
-  return <Ccomp />;
-}
-
-function Acomp() {
-  return <Bcomp />;
+  // 3. context 사용하기 : useContext()
+  const m = useContext(MessageContext);
+  return <Text>{m.message}</Text>;
 }
 
 function App(props) {
-  const [message, setMessage] = useState("");
-
-  // message state를 Ccomp에 전달 하기
-  // 1. context 만들기 : createContext();
-  // 2. context에 state 넣기 : <대문자...Context.Provider value={state}></대문자...Context.Provider>
-  // 3. tree안에서 context 사용하기
+  const [message, setMessage] = useState("init state message");
 
   return (
     <>
-      <Button onClick={() => setMessage("바꾼 메세지")}>메세지 바꾸기</Button>
-      <MessageContext.Provider value={message}>
+      {/* context에 value 넣기 : Context.Provider value={value} */}
+      <MessageContext.Provider value={{ message, setMessage }}>
         <Acomp />
+        <Bcomp />
       </MessageContext.Provider>
     </>
   );
 }
 
-// 1. context 만들기
-// context 이름은 대문자...Context
+// 1. context 만들기 : createContext
 const MessageContext = createContext(null);
 
 export default App;
