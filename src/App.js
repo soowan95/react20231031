@@ -5,6 +5,7 @@ import {
   Route,
   RouterProvider,
   useNavigate,
+  useParams,
   useSearchParams,
 } from "react-router-dom";
 import { Box, Button, Text } from "@chakra-ui/react";
@@ -20,6 +21,9 @@ function Home() {
         <Button onClick={() => navigate("/path1?id=1")}>1번 고객보기</Button>
         <Button onClick={() => navigate("/path1?id=2")}>2번 고객보기</Button>
         <Button onClick={() => navigate("/path1?id=3")}>3번 고객보기</Button>
+
+        <Button onClick={() => navigate("/path2/seoul")}>seoul 보기</Button>
+        <Button onClick={() => navigate("/path2/busan")}>busan 보기</Button>
       </Box>
       <Box>
         <Outlet />
@@ -51,10 +55,19 @@ function Acomp() {
   );
 }
 
+function Bcomp() {
+  // dynamic param을 얻는 hook
+  const { address } = useParams();
+
+  return <Box>{address}</Box>;
+}
+
 const routes = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Home />}>
       <Route path="path1" element={<Acomp />} />
+      {/* dynamic param : spring web mvc 의 path variable 과 유사 */}
+      <Route path="path2/:address" element={<Bcomp />} />
     </Route>,
   ),
 );
