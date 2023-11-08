@@ -1,57 +1,60 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  Link,
   Outlet,
   Route,
   RouterProvider,
   useNavigate,
+  useSearchParams,
 } from "react-router-dom";
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-function HomeComponent() {
-  // 경로 이동시 useNavigate hook 사용해야 함.
+function Home() {
   const navigate = useNavigate();
 
   return (
     <Box>
-      <Flex gap={"10px"}>
-        {/* 경로 이동시 javascript 코드를 그냥 쓰면 안됨 */}
-        <Box>
-          <Button onClick={() => (window.location.href = "/apath")}>
-            a로 가기
-          </Button>
-        </Box>
-        <Box>
-          <Button onClick={() => (window.location.href = "/bpath")}>
-            b로 가기
-          </Button>
-        </Box>
-        <Box>
-          <Button onClick={() => navigate("/apath")}>a로 가기</Button>
-        </Box>
-        <Box>
-          <Button onClick={() => navigate("/bpath")}>b로 가기</Button>
-        </Box>
-      </Flex>
-      <Outlet />
+      <Box>
+        <Button onClick={() => navigate("/path1?id=1")}>1번 고객보기</Button>
+        <Button onClick={() => navigate("/path1?id=2")}>2번 고객보기</Button>
+        <Button onClick={() => navigate("/path1?id=3")}>3번 고객보기</Button>
+      </Box>
+      <Box>
+        <Outlet />
+      </Box>
     </Box>
   );
 }
 
-function AComp() {
-  return <Box>a component</Box>;
-}
+function Acomp() {
+  const [customerName, setCustomerName] = useState("");
+  // query string 을 얻기
+  const [p] = useSearchParams();
 
-function BComp() {
-  return <Box>b component</Box>;
+  useEffect(() => {
+    axios
+      .get("/api/main1/sub4?" + p.toString())
+      .then(({ data }) => setCustomerName(data))
+      .catch(() => setCustomerName("고객 없음"));
+  }, [p]);
+
+  return (
+    <Box>
+      {customerName && (
+        <Text>
+          {p.get("id")} 번 고객명 : {customerName}
+        </Text>
+      )}
+    </Box>
+  );
 }
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<HomeComponent />}>
-      <Route path="apath" element={<AComp />} />
-      <Route path="bpath" element={<BComp />} />
+    <Route path="/" element={<Home />}>
+      <Route path="path1" element={<Acomp />} />
     </Route>,
   ),
 );
